@@ -29,6 +29,11 @@ document.addEventListener("DOMContentLoaded", function() {
                  errorText.innerHTML = "Ouf... There seems to be an error. Sorry!"
                  section.appendChild(errorText) 
              })
+             .then(function(response){
+                 const endText = document.createElement('h2')
+                 endText.innerHTML = "That's all for now folks!"
+                 section.appendChild(endText)
+             });
 
 
     });
