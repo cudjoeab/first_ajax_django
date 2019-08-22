@@ -24,6 +24,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 pingText.innerHTML = response.data    
                 section.appendChild(pingText)
              })
+             .catch(function(error){
+                 const errorText = document.createElement('h2')
+                 errorText.innerHTML = "Ouf... There seems to be an error. Sorry!"
+                 section.appendChild(errorText) 
+             })
 
 
     });
