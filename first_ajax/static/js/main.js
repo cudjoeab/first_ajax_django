@@ -1,11 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
     
-    let rootButton = document.getElementById('request-root')
-    let pingButton = document.getElementById('ping-button')
+    let rootButton = document.getElementById('request-root');
+    let pingButton = document.getElementById('ping-button');
+    let countButton = document.getElementById('count-button'); 
     // creating a section in HTML 
-    let section = document.createElement('section')
-    let body = document.querySelector('body')
-    body.appendChild(section)
+    let section = document.createElement('section');
+    let body = document.querySelector('body'); 
+    body.appendChild(section);
 
 
     rootButton.addEventListener('click', () => {
@@ -37,7 +38,30 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     });
-    
 
+    countButton.addEventListener('click', () => {
+        let request = 
+        axios.get('http://intro-ajax-api.herokuapp.com/count')
+             .then(function(response){
+                console.log(response.data)
+                const countText = document.createElement('h2')
+                countText.innerHTML = response.data    
+                section.appendChild(countText)
+             })
+             .catch(function(error){
+                 const errorText = document.createElement('h2')
+                 errorText.innerHTML = "Ouf... There seems to be an error. Sorry!"
+                 section.appendChild(errorText) 
+             })
+             .then(function(response){
+                 const endText = document.createElement('h2')
+                 endText.innerHTML = "That's all for now folks!"
+                 section.appendChild(endText)
+             });
+
+
+    });
+    
+    
     
 });
